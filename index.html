@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shreelakha — UI/UX Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff;
+      --bg2: #f6f5f2;
+      --text: #1a1a1a;
+      --text2: #6b6b6b;
+      --border: rgba(0,0,0,0.12);
+      --border2: rgba(0,0,0,0.22);
+      --green: #0F6E56;
+      --green-light: #E1F5EE;
+      --green-mid: #1D9E75;
+      --blue: #185FA5;
+      --blue-light: #E6F1FB;
+      --amber: #BA7517;
+      --amber-light: #FAEEDA;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
+    body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+    .pf { max-width: 860px; margin: 0 auto; padding: 0rem }
+  
+    
+
+    /* HERO */
+    .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: end; padding-bottom: 2.5rem; border-bottom: 0.5px solid var(--border); margin-bottom: 0; }
+    .hero-name { font-family: 'DM Serif Display', serif; font-size: 3.2rem; line-height: 1.1; letter-spacing: -0.5px; }
+    .hero-name em { font-style: italic; color: var(--green); }
+    .hero-tagline { font-size: 0.95rem; color: var(--text2); line-height: 1.7; margin-top: 0.75rem; }
+    .hero-right { display: flex; flex-direction: column; align-items: flex-end; gap: 1rem; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+    .tag { font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 100px; border: 0.5px solid var(--border2); color: var(--text2); letter-spacing: 0.4px; text-transform: uppercase; }
+    .contact-row { display: flex; gap: 1rem; font-size: 0.85rem; color: var(--text2); }
+    .contact-row a { color: var(--green); text-decoration: none; }
+    .contact-row a:hover { text-decoration: underline; }
+
+    /* SECTION LABEL */
+    .section-label { font-size: 11px; font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text2); margin-bottom: 1.25rem; }
+
+    /* CASE CARDS */
+    .cases { display: flex; flex-direction: column; gap: 1.5rem; }
+    .case-card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: border-color 0.2s; }
+    .case-card:hover { border-color: var(--border2); }
+    .case-banner { height: 7px; }
+    .case-body { padding: 1.5rem 1.75rem; }
+    .case-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; gap: 1rem; }
+    .case-title { font-family: 'DM Serif Display', serif; font-size: 1.45rem; line-height: 1.2; }
+    .case-subtitle { font-size: 0.85rem; color: var(--text2); margin-bottom: 1rem; }
+    .case-badge { font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 100px; background: var(--bg2); color: var(--text2); border: 0.5px solid var(--border); white-space: nowrap; flex-shrink: 0; }
+    .case-desc { font-size: 0.9rem; color: var(--text2); line-height: 1.7; margin-bottom: 1.25rem; }
+
+    /* META GRID */
+    .case-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; padding: 1rem 0; border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); margin-bottom: 1.25rem; }
+    .meta-item label { font-size: 11px; font-weight: 500; letter-spacing: 0.6px; text-transform: uppercase; color: var(--text2); display: block; margin-bottom: 3px; }
+    .meta-item span { font-size: 0.83rem; color: var(--text); line-height: 1.4; }
+
+    /* FEATURE PILLS */
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 1.25rem; }
+    .feature-pill { background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius-md); padding: 10px 14px; }
+    .feature-pill .fp-icon { font-size: 17px; margin-bottom: 5px; }
+    .feature-pill .fp-label { font-size: 12px; font-weight: 500; color: var(--text); display: block; }
+    .feature-pill .fp-desc { font-size: 11px; color: var(--text2); margin-top: 2px; line-height: 1.4; }
+
+    /* CAROUSEL */
+    .carousel-wrap { position: relative; border-radius: var(--radius-md); overflow: hidden; background: var(--bg2); border: 0.5px solid var(--border); margin-bottom: 1.25rem; }
+    .carousel-track { display: flex; transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); }
+    .carousel-track .slide { min-width: 100%; }
+    .carousel-track .slide img { width: 100%; display: block; height: 400px; object-fit: contain; background: var(--bg2); }
+    .carousel-track .slide iframe { width: 100%; display: block; height: 400px; border: none; }
+    .slide-placeholder { height: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: var(--text2); font-size: 13px; }
+    .slide-placeholder small { font-size: 11px; opacity: 0.6; }
+    .car-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 50%; background: var(--bg); border: 0.5px solid var(--border2); cursor: pointer; font-size: 18px; color: var(--text); display: flex; align-items: center; justify-content: center; transition: background 0.15s; line-height: 1; z-index: 2; }
+    .car-btn:hover { background: var(--bg2); }
+    .car-btn.prev { left: 10px; }
+    .car-btn.next { right: 10px; }
+    .car-dots { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 2; }
+    .car-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(0,0,0,0.25); cursor: pointer; transition: background 0.2s; display: block; }
+    .car-dots span.active { background: var(--text); }
+
+    /* UX PROCESS TIMELINE */
+    .process-section { margin-bottom: 1.25rem; }
+    .process-timeline { display: flex; flex-direction: column; gap: 0; }
+    .process-phase { display: grid; grid-template-columns: 140px 1fr; gap: 0 1rem; position: relative; }
+    .process-phase::before { content: ''; position: absolute; left: 143px; top: 22px; bottom: -1px; width: 1px; background: var(--border); }
+    .process-phase:last-child::before { display: none; }
+    .phase-label { font-size: 11px; font-weight: 500; text-align: right; padding: 14px 0 14px; color: var(--text2); letter-spacing: 0.3px; line-height: 1.3; }
+    .phase-content { padding: 12px 0 12px 1rem; border-left: 1px solid var(--border); position: relative; }
+    .phase-content::before { content: ''; position: absolute; left: -4px; top: 18px; width: 7px; height: 7px; border-radius: 50%; background: var(--bg); border: 1.5px solid var(--border2); }
+    .phase-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+    .phase-desc { font-size: 12px; color: var(--text2); line-height: 1.55; }
+    .phase-tag { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 100px; margin-top: 5px; }
+
+    /* OUTCOMES */
+    .outcome-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+    .outcome-chip { font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: var(--radius-md); }
+    .oc-green { background: #EAF3DE; color: #3B6D11; }
+    .oc-blue { background: var(--blue-light); color: var(--blue); }
+    .oc-teal { background: var(--green-light); color: var(--green); }
+    .oc-amber { background: var(--amber-light); color: var(--amber); }
+
+    /* BUTTONS */
+    .link-row { display: flex; gap: 0.75rem; margin-top: 1rem; flex-wrap: wrap; }
+    .link-btn { font-size: 12px; font-weight: 500; padding: 7px 16px; border-radius: var(--radius-md); border: 0.5px solid var(--border2); color: var(--text2); text-decoration: none; background: var(--bg); cursor: pointer; display: inline-flex; align-items: center; gap: 5px; transition: background 0.15s; }
+    .link-btn:hover { background: var(--bg2); }
+    .link-btn.primary { background: var(--blue); color: var(--blue-light); border-color: transparent; }
+    .link-btn.primary:hover { background: #0C447C; }
+    .link-btn.primary-amber { background: var(--amber); color: var(--amber-light); border-color: transparent; }
+    .link-btn.primary-amber:hover { background: #854F0B; }
+
+    /* DIVIDER */
+    .card-divider { height: 0.5px; background: var(--border); margin: 1.25rem 0; }
+
+
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { align-items: flex-start; }
+      .tag-row { justify-content: flex-start; }
+      .case-meta { grid-template-columns: 1fr 1fr; }
+      .about-section { grid-template-columns: 1fr; }
+      .hero-name { font-size: 2.4rem; }
+      .features { grid-template-columns: 1fr 1fr; }
+      .process-phase { grid-template-columns: 100px 1fr; }
+      .process-phase::before { left: 103px; }
+    }
+  </style>
+</head>
+<body>
+
+
+
+<div class="pf">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <div class="hero-name">Shreelakha Mutharasan's <em>UI/UX</em> Portfolio</div> <br>
+      <p class="hero-tagline">I'm a <strong>Y2 Information System student with a second major in AI in SMU</strong>, with a focus on building digital products for public and community contexts. I care about making services that are genuinely usable, not just functional, especially for diverse communities.
+      My background spans the full design and engineering stack. I'm drawn to <strong>civic technology, heritage, sustainability, and community platforms</strong> work that creates real value for real people.</p>
+    
+    </div>
+    <div class="hero-right">
+      <div class="tag-row">
+        <span class="tag">User Research</span>
+        <span class="tag">Interaction Design</span>
+        <span class="tag">A/B Testing</span>
+        <span class="tag">Figma</span>
+        <span class="tag">Full-stack</span>
+        <span class="tag">User Journey</span>
+         <span class="tag">Maze/loop11</span>
+
+      </div>
+      <div class="contact-row">
+        <a href="https://github.com/shreelakham" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/shreelakha-mutharasan" target="_blank">LinkedIn</a>
+        <span>Singapore</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<nav style="position:sticky; top:0; z-index:999;">
+  <nav style="position:sticky; top:0; z-index:999; background:rgba(255,255,255,0.95); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:0.5px solid rgba(0,0,0,0.10);">
+    <div style="max-width:860px; margin:0 auto; display:flex; align-items:stretch; height:56px; padding:0 1.5rem;">
+      <a href="#barter" style="flex:1; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:500; text-decoration:none; color:#6b6b6b; border-bottom:2px solid transparent; transition:all 0.2s;" onmouseover="this.style.color='#185FA5';this.style.borderBottomColor='#185FA5';this.style.background='#f6f5f2'" onmouseout="this.style.color='#6b6b6b';this.style.borderBottomColor='transparent';this.style.background='transparent'">🪑 Barang</a>
+      <a href="#heritage" style="flex:1; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:500; text-decoration:none; color:#6b6b6b; border-bottom:2px solid transparent; transition:all 0.2s;" onmouseover="this.style.color='#BA7517';this.style.borderBottomColor='#BA7517';this.style.background='#f6f5f2'" onmouseout="this.style.color='#6b6b6b';this.style.borderBottomColor='transparent';this.style.background='transparent'">🗺️ Heritage</a>
+    </div>
+  </nav>
+
+</nav>
+
+<div class="pf" style="padding-top:1.5rem;">
+  <div class="section-label">Case Studies</div>
+  <div class="cases">
+
+    <!-- ═══════════════════════════════════════════
+         CARD 1: HDB BARTER APP
+    ════════════════════════════════════════════ -->
+    <div class="case-card"  id="barter" >
+      <div class="case-banner" style="background: linear-gradient(90deg, #185FA5, #378ADD);"></div>
+      <div class="case-body">
+
+        <div class="case-top">
+          <div>
+            <div class="case-title">Barang Barang — HDB Barter App</div>
+            <div class="case-subtitle">A furniture exchange platform for HDB residents</div>
+          </div>
+          <span class="case-badge">Civic Tech · Community</span>
+        </div>
+
+        <p class="case-desc">Disposing of bulky furniture is a real pain point for HDB residents — costly, inconvenient, and wasteful. I conceived and designed a peer-to-peer exchange platform that lets neighbours list, discover, and swap furniture, turning unwanted items into community resources.</p>
+
+        <div class="case-meta">
+          <div class="meta-item"><label>My Role</label><span>Ideator, UX Researcher &amp; Designer</span></div>
+          <div class="meta-item"><label>Tools</label><span>Figma, Maze</span></div>
+          <div class="meta-item"><label>Methods</label><span>User Research, Persona, Scenerio, B/C Testing</span></div>
+          <div class="meta-item"><label>Platform</label><span>Web App</span></div>
+        </div>
+
+        <!-- Screenshots carousel -->
+        <div class="carousel-wrap">
+          <div class="carousel-track" id="track-barter">
+            <div class="slide"><img src="./barang/exchange.png" alt="Barter app main exchange screen"></div>
+            <div class="slide"><img src="./barang/exchange2.png" alt="Barter app listing screen"></div>
+            <!-- Add more screens:
+            <div class="slide"><img src="./barang/exchange3.png" alt="..."></div>
+            -->
+          
+          <div class="slide">
+            <video
+              src="./barang/barangBarter_video.mp4"
+              style="width:100%; height:400px; object-fit:contain; background:#000;"
+              controls
+              playsinline>
+            </video>
+            </div>
+          </div>
+          <button class="car-btn prev" onclick="moveCarousel('barter', -1)">&#8249;</button>
+          <button class="car-btn next" onclick="moveCarousel('barter', 1)">&#8250;</button>
+          <div class="car-dots" id="dots-barter"></div>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <!-- UX PROCESS TIMELINE -->
+        <div class="process-section">
+          <div class="section-label" style="margin-bottom:1rem;">UX process</div>
+          <div class="process-timeline">
+
+            <div class="process-phase">
+              <div class="phase-label">Discover</div>
+              <div class="phase-content">
+                <div class="phase-title">User research &amp; problem framing</div>
+                <div class="phase-desc">Identified the problem through observation and conversations with HDB residents. Mapped pain points around bulky item disposal — cost, inconvenience, and lack of community channels for reuse.</div>
+                <span class="phase-tag" style="background:#E6F1FB; color:#185FA5;">Interviews · Affinity mapping</span>
+              </div>
+            </div>
+
+            <div class="process-phase">
+              <div class="phase-label">Define</div>
+              <div class="phase-content">
+                <div class="phase-title">Personas &amp; journey mapping</div>
+                <div class="phase-desc">Synthesised research into two primary personas — the "downsizer" letting go of large items and the "first-time resident" furnishing on a budget. Mapped their end-to-end journeys to surface key friction points and opportunity areas.</div>
+                <span class="phase-tag" style="background:#E6F1FB; color:#185FA5;">Personas · Journey maps</span>
+              </div>
+            </div>
+
+            <div class="process-phase">
+              <div class="phase-label">Ideate</div>
+              <div class="phase-content">
+                <div class="phase-title">Concept development &amp; wireframing</div>
+                <div class="phase-desc">Originated the barter exchange concept — going beyond a simple marketplace to enable direct item-for-item swaps. Sketched low-fidelity flows then built mid-fidelity wireframes in Figma, exploring listing, browsing, and negotiation patterns.</div>
+                <span class="phase-tag" style="background:#E6F1FB; color:#185FA5;">Figma · Wireframes · User flows</span>
+              </div>
+            </div>
+
+            <div class="process-phase">
+              <div class="phase-label">Test</div>
+              <div class="phase-content">
+                <div class="phase-title">B/C testing via Maze</div>
+                <div class="phase-desc">Ran structured B/C tests using Maze to compare two variants of the listing flow and the swap confirmation screen. Analysed task completion rates, misclick rates, and time-on-task to determine which design pattern was clearer to users before finalising the UI.</div>
+                <span class="phase-tag" style="background:#E6F1FB; color:#185FA5;">Maze · B/C testing · Usability metrics</span>
+              </div>
+            </div>
+
+            <div class="process-phase">
+              <div class="phase-label">Deliver</div>
+              <div class="phase-content">
+                <div class="phase-title">High-fidelity prototype &amp; handoff</div>
+                <div class="phase-desc">Produced a high-fidelity Figma prototype incorporating test findings. Documented component decisions and interaction patterns for developer handoff.</div>
+                <span class="phase-tag" style="background:#E6F1FB; color:#185FA5;">Hi-fi prototype · Design system · Handoff</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <div class="section-label" style="margin-bottom:0.6rem;">Key outcomes</div>
+        <div class="outcome-row">
+          <span class="outcome-chip oc-blue">Validated through Maze testing</span>
+          <span class="outcome-chip oc-blue">Community-first UX</span>
+          <span class="outcome-chip oc-blue">Circular economy</span>
+          <span class="outcome-chip oc-blue">Reduced household waste</span>
+        </div>
+
+        <div class="link-row">
+          <a class="link-btn primary" href="https://www.figma.com/design/GbCILylD1tqoN04Rf96QPE/IDP?node-id=0-1&t=ELzuASbqRE4KKhRC-1" target="_blank">View Figma prototype ↗</a>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         CARD 2: HERITAGE EXPLORER FULLSTACK APP
+    ════════════════════════════════════════════ -->
+    <div class="case-card" id="heritage">
+      <div class="case-banner" style="background: linear-gradient(90deg, #BA7517, #EF9F27);"></div>
+      <div class="case-body">
+
+        <div class="case-top">
+          <div>
+            <div class="case-title">Heritage Explorer — Full-stack App</div>
+            <div class="case-subtitle">Route planning, gamified badges &amp; a digital heritage passport</div>
+          </div>
+          <span class="case-badge">Full-stack · Gamification</span>
+        </div>
+
+        <p class="case-desc">A full-stack web app that transforms Singapore's heritage trails into an interactive, gamified journey. Users plan routes on a live map, complete on-site activities, upload photos, earn heritage badges, and track their visits in a personal digital passport — making cultural exploration tangible and memorable.</p>
+
+        <div class="case-meta">
+          <div class="meta-item"><label>My Role</label><span> UI Designer &amp; Frontend + Backend Developer</span></div>
+          <div class="meta-item"><label>Stack</label><span>Vue.js, Vercel, Supabase, Javascript, HTML, CSS, Bootstrap, Figma</span></div>
+          <div class="meta-item"><label>Methods</label><span>Prototyping, Gamification Design</span></div>
+          <div class="meta-item"><label>Platform</label><span>Web App</span></div>
+        </div>
+
+        <!-- Feature pills -->
+        <div class="features">
+          <div class="feature-pill">
+            <div class="fp-icon">🗺️</div>
+            <span class="fp-label">Interactive map</span>
+            <div class="fp-desc">Live route planning across heritage sites</div>
+          </div>
+          <div class="feature-pill">
+            <div class="fp-icon">📸</div>
+            <span class="fp-label">Activity upload</span>
+            <div class="fp-desc">Photo uploads tied to each location visited</div>
+          </div>
+          <div class="feature-pill">
+            <div class="fp-icon">🏅</div>
+            <span class="fp-label">Heritage badges</span>
+            <div class="fp-desc">Collectible badges earned at each site</div>
+          </div>
+          <div class="feature-pill">
+            <div class="fp-icon">📖</div>
+            <span class="fp-label">Digital passport</span>
+            <div class="fp-desc">Personal record of visits and achievements</div>
+          </div>
+        </div>
+
+        <!-- Video carousel -->
+        <div class="carousel-wrap">
+          <div class="carousel-track" id="track-heritage">
+            <div class="slide"><img src="./heritage/home.png" alt="Heritage app home screen"></div>
+            <div class="slide"><img src="./heritage/activity.png" alt="Heritage app activity screen"></div>
+            <div class="slide"><img src="./heritage/badges.png" alt="Heritage app badge screen"></div>
+            
+          </div>
+          <button class="car-btn prev" onclick="moveCarousel('heritage', -1)">&#8249;</button>
+          <button class="car-btn next" onclick="moveCarousel('heritage', 1)">&#8250;</button>
+          <div class="car-dots" id="dots-heritage"></div>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <!-- UX PROCESS TIMELINE -->
+        <div class="process-section">
+          <div class="section-label" style="margin-bottom:1rem;">UX process</div>
+          <div class="process-timeline">
+
+            <div class="process-phase">
+              <div class="phase-label">Ideate</div>
+              <div class="phase-content">
+                <div class="phase-title">Concept &amp; gamification framework</div>
+                <div class="phase-desc">Originated the idea of a heritage passport — applying gamification principles (badges, progress tracking, achievements) to encourage deeper engagement with Singapore's cultural sites beyond passive tourism.</div>
+                <span class="phase-tag" style="background:#FAEEDA; color:#BA7517;">Concept ideation · Gamification design</span>
+              </div>
+            </div>
+
+            <div class="process-phase">
+              <div class="phase-label">Design</div>
+              <div class="phase-content">
+                <div class="phase-title">UI design &amp; prototyping in Figma (above carousel) </div>
+                <div class="phase-desc">Designed the full interface in Figma — including the map view, site detail pages, activity upload flow, badge collection screen, and passport layout. Built interactive prototypes to validate navigation logic and onboarding flow before development.</div>
+                <span class="phase-tag" style="background:#FAEEDA; color:#BA7517;">Figma · Interactive prototype · UI system</span>
+              </div>
+            </div>
+
+            <div class="process-phase">
+              <div class="phase-label">Build</div>
+              <div class="phase-content">
+                <div class="phase-title">Frontend &amp; backend development in Vue.js</div>
+                <div class="phase-desc">Implemented the full application as both UI frontend and backend developer using Vue.js. Built the interactive map, photo upload pipeline, badge logic, and passport data model — bridging design intent with working code end-to-end.</div>
+                <span class="phase-tag" style="background:#FAEEDA; color:#BA7517;">Vue.js · Frontend · Backend · API integration</span>
+              </div>
+            </div>
+
+            <div class="process-phase">
+              <div class="phase-label">Deliver</div>
+              <div class="phase-content">
+                <div class="phase-title">Live deployment &amp; iteration</div>
+                <div class="phase-desc">Shipped the app to a live environment. Gathered feedback from initial users and iterated on the badge earn flow and passport UI based on real usage patterns.</div>
+                <span class="phase-tag" style="background:#FAEEDA; color:#BA7517;">Live deploy · Feedback loops · Iteration</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <div class="section-label" style="margin-bottom:0.6rem;">Key outcomes</div>
+        <div class="outcome-row">
+          <span class="outcome-chip oc-amber">End-to-end delivery</span>
+          <span class="outcome-chip oc-amber">Figma → production</span>
+          <span class="outcome-chip oc-amber">Gamified engagement</span>
+        </div>
+
+        <div class="link-row">
+          <a class="link-btn primary-amber" href="https://www.youtube.com/watch?v=bO-ILIpVVnQ" target="_blank">Live demo ↗</a>
+        </div>
+      </div>
+    </div>
+</div>
+  </div>
+
+  <!-- ABOUT -->
+
+</div>
+
+<script>
+  const carState = {};
+
+  function initCarousel(id) {
+    const track = document.getElementById('track-' + id);
+    if (!track) return;
+    const dotsEl = document.getElementById('dots-' + id);
+    const total = track.children.length;
+    carState[id] = 0;
+
+    const prevBtn = track.parentElement.querySelector('.prev');
+    const nextBtn = track.parentElement.querySelector('.next');
+    if (total <= 1) {
+      if (prevBtn) prevBtn.style.display = 'none';
+      if (nextBtn) nextBtn.style.display = 'none';
+    }
+
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('span');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goTo(id, i));
+      dotsEl.appendChild(dot);
+    }
+
+    if (total <= 1) dotsEl.style.display = 'none';
+  }
+
+  function goTo(id, index) {
+    const track = document.getElementById('track-' + id);
+    const dotsEl = document.getElementById('dots-' + id);
+    const total = track.children.length;
+    carState[id] = (index + total) % total;
+    track.style.transform = 'translateX(-' + (carState[id] * 100) + '%)';
+    dotsEl.querySelectorAll('span').forEach((d, i) => {
+      d.classList.toggle('active', i === carState[id]);
+    });
+  }
+
+  function moveCarousel(id, dir) {
+    goTo(id, (carState[id] || 0) + dir);
+  }
+
+  initCarousel('barter');
+  initCarousel('heritage');
+</script>
+</body>
+</html>
