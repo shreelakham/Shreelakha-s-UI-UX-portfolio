@@ -31,7 +31,7 @@
     
 
     /* HERO */
-    .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: end; padding-bottom: 2.5rem; border-bottom: 0.5px solid var(--border); margin-bottom: 0; }
+    .hero { display: flex; flex-direction: column; gap: 1.5rem; align-items: center; text-align: center; padding-bottom: 2.5rem; border-bottom: 0.5px solid var(--border); margin-bottom: 0; }
     .hero-name { font-family: 'DM Serif Display', serif; font-size: 3.2rem; line-height: 1.1; letter-spacing: -0.5px; }
     .hero-name em { font-style: italic; color: var(--green); }
     .hero-tagline { font-size: 0.95rem; color: var(--text2); line-height: 1.7; margin-top: 0.75rem; }
@@ -139,32 +139,37 @@
 
 
 <div class="pf">
+  <div class="hero" style="display:flex; flex-direction:column; gap:1.5rem; padding: 2.5rem 1.5rem 2.5rem;">
 
-  <!-- HERO -->
-  <div class="hero">
+    <!-- Name + Title -->
     <div>
-      <div class="hero-name">Shreelakha Mutharasan's <em>UI/UX</em> Portfolio</div> <br>
-      <p class="hero-tagline">I'm a <strong>Y2 Information System student with a second major in AI in SMU</strong>, with a focus on building digital products for public and community contexts. I care about making services that are genuinely usable, not just functional, especially for diverse communities.
-      My background spans the full design and engineering stack. I'm drawn to <strong>civic technology, heritage, sustainability, and community platforms</strong> work that creates real value for real people.</p>
-    
+      <div class="hero-name" style="font-size:2.8rem;">Shreelakha Mutharasan</div>
+      <div style="font-family:'DM Serif Display',serif; font-size:1.6rem; font-style:italic; color:var(--green); margin-top:0.3rem;">UI/UX Portfolio</div>
     </div>
-    <div class="hero-right">
-      <div class="tag-row">
-        <span class="tag">User Research</span>
-        <span class="tag">Interaction Design</span>
-        <span class="tag">A/B Testing</span>
-        <span class="tag">Figma</span>
-        <span class="tag">Full-stack</span>
-        <span class="tag">User Journey</span>
-         <span class="tag">Maze/loop11</span>
 
-      </div>
-      <div class="contact-row">
-        <a href="https://github.com/shreelakham" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/shreelakha-mutharasan" target="_blank">LinkedIn</a>
-        <span>Singapore</span>
-      </div>
+    <!-- Tagline centred -->
+    <p class="hero-tagline" style="max-width:620px; margin:0 auto; text-align:center;">
+      I'm a <strong style="color:var(--text); font-weight:500;">Y2 Information Systems student with a second major in AI at SMU</strong>, with a focus on building digital products for public and community contexts. I care about making services that are genuinely usable — not just functional — especially for diverse communities. I'm drawn to <strong style="color:var(--text); font-weight:500;">civic technology, heritage, sustainability, and community platforms</strong> — work that creates real value for real people.
+    </p>
+
+    <!-- Skills in a single wrapped row -->
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:8px;">
+      <span class="tag">User Research</span>
+      <span class="tag">Interaction Design</span>
+      <span class="tag">A/B Testing</span>
+      <span class="tag">Figma</span>
+      <span class="tag">Full-stack</span>
+      <span class="tag">User Journey</span>
+      <span class="tag">Maze / Loop11</span>
     </div>
+
+    <!-- GitHub + LinkedIn -->
+    <div class="contact-row" style="justify-content:center;">
+      <a href="https://github.com/shreelakham" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/shreelakha-mutharasan" target="_blank">LinkedIn</a>
+      <span>Singapore</span>
+    </div>
+
   </div>
 </div>
 
@@ -202,10 +207,10 @@
         <p class="case-desc">Disposing of bulky furniture is a real pain point for HDB residents — costly, inconvenient, and wasteful. I conceived and designed a peer-to-peer exchange platform that lets neighbours list, discover, and swap furniture, turning unwanted items into community resources.</p>
 
         <div class="case-meta">
-          <div class="meta-item"><label>My Role</label><span>Ideator, UX Researcher &amp; Designer</span></div>
-          <div class="meta-item"><label>Tools</label><span>Figma, Maze</span></div>
-          <div class="meta-item"><label>Methods</label><span>User Research, Persona, Scenerio, B/C Testing</span></div>
-          <div class="meta-item"><label>Platform</label><span>Web App</span></div>
+          <div class="meta-item"><label><strong>My Role</strong></label><span>Ideator, UX Researcher &amp; Designer</span></div>
+          <div class="meta-item"><label><strong>Tools</strong></label><span>Figma, Maze</span></div>
+          <div class="meta-item"><label><strong>Methods</strong></label><span>User Research, Persona, Scenerio, B/C Testing</span></div>
+          <div class="meta-item"><label><strong>Platform</strong></label><span>Web App</span></div>
         </div>
 
         <!-- Screenshots carousel -->
@@ -235,7 +240,7 @@
 
         <!-- UX PROCESS TIMELINE -->
         <div class="process-section">
-          <div class="section-label" style="margin-bottom:1rem;">UX process</div>
+          <div class="section-label" style="margin-bottom:1rem;"><strong>UX process</strong></div>
           <div class="process-timeline">
 
             <div class="process-phase">
@@ -288,7 +293,7 @@
 
         <div class="card-divider"></div>
 
-        <div class="section-label" style="margin-bottom:0.6rem;">Key outcomes</div>
+        <div class="section-label" style="margin-bottom:0.6rem;"><strong>Key outcomes</strong> outcomes</div>
         <div class="outcome-row">
           <span class="outcome-chip oc-blue">Validated through Maze testing</span>
           <span class="outcome-chip oc-blue">Community-first UX</span>
@@ -321,10 +326,10 @@
         <p class="case-desc">A full-stack web app that transforms Singapore's heritage trails into an interactive, gamified journey. Users plan routes on a live map, complete on-site activities, upload photos, earn heritage badges, and track their visits in a personal digital passport — making cultural exploration tangible and memorable.</p>
 
         <div class="case-meta">
-          <div class="meta-item"><label>My Role</label><span> UI Designer &amp; Frontend + Backend Developer</span></div>
-          <div class="meta-item"><label>Stack</label><span>Vue.js, Vercel, Supabase, Javascript, HTML, CSS, Bootstrap, Figma</span></div>
-          <div class="meta-item"><label>Methods</label><span>Prototyping, Gamification Design</span></div>
-          <div class="meta-item"><label>Platform</label><span>Web App</span></div>
+          <div class="meta-item"><label><strong>My Role</strong></label><span> UI Designer &amp; Frontend + Backend Developer</span></div>
+          <div class="meta-item"><label><strong>Stack</strong></label><span>Vue.js, Vercel, Supabase, Javascript, HTML, CSS, Bootstrap, Figma</span></div>
+          <div class="meta-item"><label><strong>Methods</strong></label><span>Prototyping, Gamification Design</span></div>
+          <div class="meta-item"><label><strong>Platform</strong></label><span>Web App</span></div>
         </div>
 
         <!-- Feature pills -->
@@ -368,7 +373,7 @@
 
         <!-- UX PROCESS TIMELINE -->
         <div class="process-section">
-          <div class="section-label" style="margin-bottom:1rem;">UX process</div>
+          <div class="section-label" style="margin-bottom:1rem;"><strong>UX process</strong></div>
           <div class="process-timeline">
 
             <div class="process-phase">
@@ -412,7 +417,7 @@
 
         <div class="card-divider"></div>
 
-        <div class="section-label" style="margin-bottom:0.6rem;">Key outcomes</div>
+        <div class="section-label" style="margin-bottom:0.6rem;"><strong>Key outcomes</strong></div>
         <div class="outcome-row">
           <span class="outcome-chip oc-amber">End-to-end delivery</span>
           <span class="outcome-chip oc-amber">Figma → production</span>
